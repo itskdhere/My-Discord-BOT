@@ -1,8 +1,8 @@
 const fs = require('node:fs'); 
  const path = require('node:path'); 
- const { Client, Collection, GatewayIntentBits } = require('discord.js'); 
- //const { token } = require('config.js'); 
-  require('http').createServer((req, res) => res.end('Bot is alive!')).listen(3000)
+ const { Client, Collection, GatewayIntentBits , ActivityType } = require('discord.js'); 
+ //const { token } = require('./config.json'); 
+   require('http').createServer((req, res) => res.end('Bot is alive!')).listen(443)
  const client = new Client({ intents: [GatewayIntentBits.Guilds] }); 
   
  client.commands = new Collection(); 
@@ -15,10 +15,12 @@ const fs = require('node:fs');
          client.commands.set(command.data.name, command); 
  } 
   
- client.once('ready', () => { 
+ client.on('ready', () => { 
          console.log('Ready!'); 
- }); 
-  
+   client.user.setStatus('idle');
+client.user.setActivity('The Limitless Developer', { type: ActivityType.Watching });
+ }) 
+
  client.on('interactionCreate', async interaction => { 
          if (!interaction.isChatInputCommand()) return; 
   
@@ -30,8 +32,7 @@ const fs = require('node:fs');
                  await command.execute(interaction); 
          } catch (error) { 
                  console.error(error); 
-                 await interaction.reply({ content: 'There was an error while executing this command!!', ephemeral: true }); 
+                 await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true }); 
          } 
  }); 
-  
- client.login(process.env.token);
+ client.login(process.env.token)

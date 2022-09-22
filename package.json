@@ -1,12 +1,13 @@
 {
   "name": "nodejs",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "newcmd": "node deploy-commands.js"
+    "newcmd": "node deploy-commands.js",
+    "delcmd": "node delete-commands.js"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +16,7 @@
     "@discordjs/rest": "^1.1.0",
     "@types/node": "^18.0.6",
     "config.js": "^0.1.0",
-    "discord.js": "^14.4.0",
+    "discord.js": "^14.3.0",
     "node-fetch": "^3.2.6"
   }
 }
