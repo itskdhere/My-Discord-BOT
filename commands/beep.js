@@ -5,6 +5,10 @@ module.exports = {
 		.setName('beep')
 		.setDescription('Beep!'),
 	async execute(interaction) {
-		return interaction.reply('Boop!');
+		//const message = await interaction.reply({ content: '<:earlysupporter:1025813250455121990>', fetchReply: true })
+    //message.react('😄');
+    const message = await interaction.reply({ content: '<:earlysupporter:1025813250455121990>', fetchReply: true });
+	const reactionEmoji = message.guild.emojis.cache.find(emoji => emoji.name === 'earlysupporter');
+	message.react(reactionEmoji);
 	},
 };
